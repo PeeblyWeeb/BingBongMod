@@ -4,12 +4,12 @@ namespace BingBongMod.Patches;
 
 public class BingBongStatusPatches
 {
-    [HarmonyPatch(typeof(BingBongStatus), "Update")]
+    /*[HarmonyPatch(typeof(BingBongStatus), "Update")]
     class SetTextsPatch
     {
-        static bool Postfix(BingBongPowers __instance)
+        static bool Postfix(BingBongStatus __instance)
         {
             return true;
         }
-    }
+    }*/
 }

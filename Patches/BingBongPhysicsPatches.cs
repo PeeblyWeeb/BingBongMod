@@ -23,7 +23,7 @@ public class BingBongPhysicsPatches
         {
             __instance.physicsType = setType;
             
-            __instance.GetComponent<BingBongPowers>().SetTip($"{setType} (Force: {__instance.GetComponent<BingBongForceAbilities>().force})", 0);
+            BingBongUtils.UpdateTip(__instance.gameObject);
             return false;
         }
     }
@@ -55,10 +55,11 @@ public class BingBongPhysicsPatches
 
             if (force.force != oldForce)
             {
+                BingBongUtils.UpdateTip(__instance.gameObject);
+                
                 PhotonView view = __instance.GetComponent<PhotonView>();
                 view.RPC("BingBongMod__SetForce", RpcTarget.All, view.ViewID, force.force);
             }
-            
         }
     }
     
