@@ -31,8 +31,6 @@ public class BingBongPatches
             physics.enabled = false;
             status.enabled = false;
             force.enabled = false;
-
-
         }
     }
 }

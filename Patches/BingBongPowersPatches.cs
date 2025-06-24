@@ -62,6 +62,8 @@ public class BingBongPowersPatches
                 Title.SetActive(true);
                 SubTitle.SetActive(true);
                 Tip.SetActive(true);
+                
+                BingBongUtils.UpdateTip(__instance.gameObject);
             }
             
             __instance.titleText = Title.GetComponentInChildren<TextMeshProUGUI>();
@@ -91,15 +93,14 @@ public class BingBongPowersPatches
     [HarmonyPatch(typeof(BingBongPowers), nameof(BingBongPowers.SetTip))]
     class SetTipPatch
     {
-        static bool Prefix(string tip)
+        static bool Prefix(BingBongPowers __instance,string tip)
         {
             if (PowersStartPatch.Tip == null)
             {
                 return false;
             }
             
-            PowersStartPatch.Tip.GetComponentInChildren<TextMeshProUGUI>().text = tip;
-            
+            BingBongUtils.UpdateTip(__instance.gameObject);
             return false;
         }
     }
@@ -134,17 +135,21 @@ public class BingBongPowersPatches
             if (Input.GetKeyDown(KeyCode.F1))
             {
                 __instance.GetComponent<BingBongStatus>().enabled = true;
+                BingBongUtils.UpdateTip(__instance.gameObject);
                 return false;
             }
             if (Input.GetKeyDown(KeyCode.F2))
             {
                 __instance.GetComponent<BingBongTimeControl>().enabled = true;
+                BingBongUtils.UpdateTip(__instance.gameObject);
                 return false;
             }
             if (Input.GetKeyDown(KeyCode.F3))
             {
                 __instance.GetComponent<BingBongPhysics>().enabled = true;
                 __instance.GetComponent<BingBongForceAbilities>().enabled = true;
+                
+                BingBongUtils.UpdateTip(__instance.gameObject);
                 
                 view.RPC("BingBongMod__SetForceEnabled", RpcTarget.All, view.ViewID, true);
                 return false;
