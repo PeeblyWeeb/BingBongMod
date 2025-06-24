@@ -122,6 +122,7 @@ public class BingBongPowersPatches
     {
         static bool Prefix(BingBongPowers __instance)
         {
+            if (__instance.GetComponent<Item>().holderCharacter != Character.localCharacter) return false;
             if (!Input.GetKeyDown(KeyCode.F1) && !Input.GetKeyDown(KeyCode.F2) && !Input.GetKeyDown(KeyCode.F3)) return false;
             __instance.GetComponent<BingBongStatus>().enabled = false;
             __instance.GetComponent<BingBongPhysics>().enabled = false;
