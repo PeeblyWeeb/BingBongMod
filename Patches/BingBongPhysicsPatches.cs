@@ -69,9 +69,9 @@ public class BingBongPhysicsPatches
         static void Postfix(BingBongPhysics __instance)
         {
             __instance.GetComponent<BingBongForceAbilities>().physicsType = __instance.physicsType;
+            BingBongUtils.UpdateTip(__instance.gameObject);
             
             PhotonView view = __instance.GetComponent<PhotonView>();
-            
             view.RPC("BingBongMod__SetState", RpcTarget.All, view.ViewID, __instance.physicsType);
             
             // __instance
