@@ -1,0 +1,570 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <AssemblyName>BingBongMod</AssemblyName>
+    <Product>My first plugin</Product>
+    <Version>1.0.0</Version>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+      https://api.nuget.org/v3/index.json;
+      https://nuget.bepinex.dev/v3/index.json;
+      https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <RootNamespace>BingBongMod</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="BepInEx.Analyzers" Version="1.*" PrivateAssets="all" />
+    <PackageReference Include="BepInEx.Core" Version="5.*" />
+    <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(TargetFramework.TrimEnd(`0123456789`))' == 'net'">
+    <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.2" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Reference Include="Ashley.MeshSplitter">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Ashley.MeshSplitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\com.rlabrecque.steamworks.net.dll</HintPath>
+    </Reference>
+    <Reference Include="DemiLib">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\DemiLib.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTween">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\DOTween.dll</HintPath>
+    </Reference>
+    <Reference Include="DOTweenPro">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\DOTweenPro.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\HBAO.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="HBAO.Universal.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\HBAO.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Mono.Security">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Mono.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\netstandard.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Photon3Unity3D">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Photon3Unity3D.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonChat">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonChat.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonRealtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonRealtime.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonUnityNetworking.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking.Demos">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonUnityNetworking.Demos.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonUnityNetworking.Utilities">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonUnityNetworking.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonVoice">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonVoice.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonVoice.API">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonVoice.API.dll</HintPath>
+    </Reference>
+    <Reference Include="PhotonVoice.PUN">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\PhotonVoice.PUN.dll</HintPath>
+    </Reference>
+    <Reference Include="pworld">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\pworld.dll</HintPath>
+    </Reference>
+    <Reference Include="sc.posteffects.runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\sc.posteffects.runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Attributes">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Sirenix.OdinInspector.Attributes.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Modules.Unity.Addressables">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Sirenix.OdinInspector.Modules.Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.OdinInspector.Modules.UnityLocalization">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Sirenix.OdinInspector.Modules.UnityLocalization.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Sirenix.Serialization.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Serialization.Config">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Sirenix.Serialization.Config.dll</HintPath>
+    </Reference>
+    <Reference Include="Sirenix.Utilities">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Sirenix.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.ComponentModel.Composition.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.Data.DataSetExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.EnterpriseServices.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ServiceModel.Internals">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.ServiceModel.Internals.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\System.Transactions.dll</HintPath>
+    </Reference>
+    <Reference Include="Tayx.Graphy">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Tayx.Graphy.dll</HintPath>
+    </Reference>
+    <Reference Include="unity-websocket-sharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\unity-websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Addressables">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Addressables.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.AI.Navigation.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Animation.Rigging.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging.DocCodeExamples">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Animation.Rigging.DocCodeExamples.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Burst.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Burst.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections.LowLevel.ILSupport">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Collections.LowLevel.ILSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.InputSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InputSystem.ForUI">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.InputSystem.ForUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.InternalAPIEngineBridge.013">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.InternalAPIEngineBridge.013.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Localization">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Mathematics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.MemoryProfiler">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.MemoryProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Center.Common">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Multiplayer.Center.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Playmode">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Multiplayer.Playmode.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Multiplayer.Playmode.Common.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Multiplayer.Playmode.Common.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Networking.Transport">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Networking.Transport.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Profiling.Core">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Profiling.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Rendering.LightTransport.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Rendering.LightTransport.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.Runtime.Shared">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.Core.Runtime.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.GPUDriven.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.GPUDriven.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.2D.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.Universal.2D.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Config.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.Universal.Config.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.RenderPipelines.Universal.Shaders">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.RenderPipelines.Universal.Shaders.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ResourceManager">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.ResourceManager.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.ScriptableBuildPipeline">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.ScriptableBuildPipeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Authentication">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Authentication.PlayerAccounts">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Authentication.PlayerAccounts.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Analytics">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Components">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Components.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Configuration">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Device">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Device.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Environments.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Environments.Internal">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Environments.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Internal">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Networking">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Networking.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Registration">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Registration.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Scheduler">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Scheduler.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Telemetry">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Telemetry.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Core.Threading">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Core.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Multiplayer">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Multiplayer.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.QoS">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.QoS.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Services.Wire.Internal">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Services.Wire.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Splines.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.TextMeshPro">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Timeline">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.Timeline.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Unity.VisualEffectGraph.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AccessibilityModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.AccessibilityModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AIModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.AIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AMDModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.AMDModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AndroidJNIModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.AndroidJNIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AnimationModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.AnimationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ARModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ARModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AssetBundleModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.AudioModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.AudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClothModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ClothModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterInputModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ClusterInputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ClusterRendererModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ClusterRendererModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ContentLoadModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ContentLoadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CrashReportingModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.CrashReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DirectorModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.DirectorModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.DSPGraphModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.DSPGraphModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GameCenterModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.GameCenterModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GIModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.GIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GraphicsStateCollectionSerializerModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.GraphicsStateCollectionSerializerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.GridModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.GridModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HierarchyCoreModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.HierarchyCoreModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.HotReloadModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.HotReloadModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ImageConversionModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.IMGUIModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputForUIModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.InputForUIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputLegacyModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.InputLegacyModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.InputModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.InputModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.JSONSerializeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.LocalizationModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.LocalizationModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.MarshallingModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.MarshallingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.MultiplayerModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.MultiplayerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.NVIDIAModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.NVIDIAModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ParticleSystemModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ParticleSystemModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PerformanceReportingModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.PerformanceReportingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.Physics2DModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.Physics2DModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.PropertiesModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.PropertiesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ScreenCaptureModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ScreenCaptureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.ShaderVariantAnalyticsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.ShaderVariantAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SharedInternalsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.SharedInternalsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteMaskModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.SpriteMaskModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpriteShapeModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.SpriteShapeModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.StreamingModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.StreamingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubstanceModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.SubstanceModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SubsystemsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.SubsystemsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.TerrainModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TerrainPhysicsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.TerrainPhysicsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreFontEngineModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.TextCoreFontEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextCoreTextEngineModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.TextCoreTextEngineModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TextRenderingModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.TextRenderingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TilemapModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.TilemapModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.TLSModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.TLSModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIElementsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UIElementsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UIModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UmbraModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UmbraModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsCommonModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityAnalyticsCommonModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityAnalyticsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityAnalyticsModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityConnectModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityConnectModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityCurlModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityCurlModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityTestProtocolModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityTestProtocolModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAssetBundleModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityWebRequestAssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestAudioModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityWebRequestAudioModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityWebRequestModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestTextureModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityWebRequestTextureModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.UnityWebRequestWWWModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.UnityWebRequestWWWModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VehiclesModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.VehiclesModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VFXModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.VFXModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VideoModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.VideoModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VirtualTexturingModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.VirtualTexturingModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.VRModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.VRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.WindModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.WindModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.XRModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityEngine.XRModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityUIExtensions">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\UnityUIExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Whinarn.UnityMeshSimplifier.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Whinarn.UnityMeshSimplifier.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.AutoLOD">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Zorro.AutoLOD.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.ControllerSupport">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Zorro.ControllerSupport.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.Core.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Zorro.Core.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.JiggleBones">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Zorro.JiggleBones.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.PhotonUtility">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Zorro.PhotonUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.Settings.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Zorro.Settings.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Zorro.UI.Runtime">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\PEAK\PEAK_Data\Managed\Zorro.UI.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
