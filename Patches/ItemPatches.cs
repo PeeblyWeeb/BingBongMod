@@ -1,15 +1,24 @@
-﻿using BingBongMod.Behaviors;
+﻿using System;
+using BingBongMod.Behaviors;
 using HarmonyLib;
+using UnityEngine;
 
 namespace BingBongMod.Patches;
 
-public class BingBongPatches
+public class ItemPatches
 {
-    [HarmonyPatch(typeof(BingBong), "Start")]
+    // they done nuked my boy so, guess this is the new "Start" patch for BingBong, that's cool.
+    [HarmonyPatch(typeof(Item), "Start")]
     class BingBongStartPatch
     {
-        static void Prefix(BingBong __instance)
-        {
+        static void Postfix(Item __instance) {
+            BingBong bingBong = __instance.gameObject.GetComponent<BingBong>();
+            if (bingBong == null) {
+                return;
+            }
+            
+            Plugin.Logger.LogInfo("Found BingBong, attaching components.");
+            
             __instance.gameObject.AddComponent<BingBongDestroyWatcher>();
             __instance.gameObject.AddComponent<BingBongRPC>();
             
@@ -17,7 +26,7 @@ public class BingBongPatches
             if (item.holderCharacter == null)
             {
                 BingBongPowersPatches.HideBingBongUI();
-
+            
                 return;
             };
             
