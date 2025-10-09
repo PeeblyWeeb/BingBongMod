@@ -7,4 +7,6 @@ In simpler terms: enables cheats :)
 this is my first mod and im using it to learn C# and modding in general, please report any issues using the issues tab and i'll try to get to them whenever i'm free. thank you!
 
 ## Controls
-Hold out bingbong and use F1, F2 and F3 to toggle modes. In physics mode use the scroll wheel to change the force, use SHIFT or CTRL to increment by 10 or 50 at a time
+Hold out bingbong and use F1, F2 and F3 to toggle modes. In physics mode use the scroll wheel to change the force, use SHIFT or CTRL to increment by 10 or 50 at a time (you might need to increase it higher than you think to see it work!)
+
+Physics mode and all sub-modes only work on players as far as I know (and some may not work at all)
